@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   @ViewChild('loginform', { static: false }) loginForm: NgForm;
 
   constructor(
-      private http: HttpClient, 
+      private http: HttpClient,
       private authService: AuthService,
       private router: Router
     ) { }
@@ -26,15 +26,15 @@ export class LoginComponent implements OnInit {
     const headers = new HttpHeaders({'Content-type': 'application/json'});
 
     const reqObject = {
-      username: username,
-      password: password
+      username,
+      password
     };
 
-    this.http.post('http://localhost:3000/users/login', reqObject, { headers: headers }).subscribe(
-      
+    this.http.post('http://localhost:3000/users/login', reqObject, { headers }).subscribe(
+
       // The response data
       (response) => {
-      
+
         // If the user authenticates successfully, we need to store the JWT returned in localStorage
         this.authService.setLocalStorage(response);
 
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       (error) => {
         console.log(error);
       },
-      
+
       // When observable completes
       () => {
         console.log('done!');

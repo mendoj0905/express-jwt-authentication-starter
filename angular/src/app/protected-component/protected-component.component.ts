@@ -17,7 +17,7 @@ export class ProtectedComponentComponent implements OnInit {
     this.http.get<any>('http://localhost:3000/users/protected').subscribe(
       (response) => {
         if (response) {
-          this.message = response.msg;
+          this.message = response.message;
         }
       },
 
